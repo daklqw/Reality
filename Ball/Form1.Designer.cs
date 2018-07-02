@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.BallPic = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.BallPic)).BeginInit();
@@ -42,7 +43,7 @@
             // 
             // BallPic
             // 
-            this.BallPic.Image = global::Ball.Properties.Resources.BallTemp;
+            this.BallPic.Image = ((System.Drawing.Image)(resources.GetObject("BallPic.Image")));
             this.BallPic.Location = new System.Drawing.Point(12, 12);
             this.BallPic.Name = "BallPic";
             this.BallPic.Size = new System.Drawing.Size(35, 35);
@@ -54,8 +55,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.BallPic);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Ball";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);

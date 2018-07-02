@@ -62,13 +62,12 @@ namespace Ball
             // If up or down, reverse Y
             ball.position = ball.velocity + ball.position;
             logs.Write(ball.position.ToString());
-            //if (++RunTimes > 1000) this.Exit();
             // MessageBox.Show("run"); //WOC
             BallPic.Location = new System.Drawing.Point(
                 Convert.ToInt32(ball.position.GetX()),
                 Convert.ToInt32(ball.position.GetY())
             );
-            if( ++ RunTimes % 5 == 0)
+            if (Configures.GRotateSpeed > 0 && ++RunTimes % Configures.GRotateSpeed == 0)
             {
                 Configures.VectorG = Configures.VectorG.rotate(Math.PI / 12);
             }
