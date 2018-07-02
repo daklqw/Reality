@@ -46,31 +46,13 @@ namespace Ball
         /// <param name="e"></param>
         private void timer1_Tick(object sender, EventArgs e)
         {
-            ball.velocity = ball.velocity * Configures.AirResistance;
-            if (ball.velocity.Distance(new Position()) <= Configures.MaxSpeed)
-                ball.velocity = ball.velocity + Configures.VectorG * Configures.GCoefficient;
-            // Update velocity
-            int impact = (ball.velocity + ball.position).overRange(GetWindowRange(), ball.GetR());
-            if (impact > 0)
-                ball.velocity = ball.velocity * Configures.Impact_Speed_Reduce;
-            // Check if over range
-            if ((impact & (Position.overRangeType.Left | Position.overRangeType.Right)) > 0)
-                ball.velocity.SetX(-ball.velocity.GetX());
-            // If left or right, reverse X
-            if ((impact & (Position.overRangeType.Up | Position.overRangeType.Down)) > 0)
-                ball.velocity.SetY(-ball.velocity.GetY());
-            // If up or down, reverse Y
-            ball.position = ball.velocity + ball.position;
-            logs.Write(ball.position.ToString());
-            // MessageBox.Show("run"); //WOC
+            ball.Update(GetWindowRange());
             BallPic.Location = new System.Drawing.Point(
                 Convert.ToInt32(ball.position.GetX()),
                 Convert.ToInt32(ball.position.GetY())
             );
             if (Configures.GRotateSpeed > 0 && ++RunTimes % Configures.GRotateSpeed == 0)
-            {
                 Configures.VectorG = Configures.VectorG.rotate(Math.PI / 12);
-            }
         }
 
         public void Exit()
